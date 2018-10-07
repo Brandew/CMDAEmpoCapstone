@@ -1,0 +1,21 @@
+visits <- read.csv(file = "~/Downloads/emporium_visits.csv",header = T, sep = ",")
+library(lubridate)
+
+
+day2 <- strptime(visits$checkin_at, format= "%d/%m/%Y")
+day <- format(day2, format="%Y-%m-%d")
+day <- weekdays(as.Date(day))
+day <- data.frame(day)
+monl <- length(which(day=="Monday"))
+tuel <- length(which(day=="Tuesday"))
+wedl <- length(which(day=="Wednesday"))
+thurl <- length(which(day=="Thursday"))
+fril <- length(which(day=="Friday"))
+satl <- length(which(day=="Saturday"))
+sunl <- length(which(day=="Sunday"))
+Day = c("Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday")
+Count = c(monl,tuel,wedl,thurl,fril,satl,sunl)
+tmp <- data.frame(Count, Day)
+tmp$Day <- factor(tmp$Day, levels = c("Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"))
+ggplot(data=tmp, aes(x=Day,y=Count)) +
+  geom_bar(stat="identity")
