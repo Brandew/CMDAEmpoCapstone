@@ -24,7 +24,7 @@ deadlines <- read.csv("C:/Users/Neha Desai/Desktop/Fall 2018/CMDA 4864/Data/dead
 courses <- read.csv("C:/Users/Neha Desai/Desktop/Fall 2018/CMDA 4864/Data/courses.csv", header = T)
 
 
-# Removing 'id' and 'code' columns from terms because useless ####
+# Removing 'id' and 'code' columns from terms ####
 terms <- terms[, c(2,3,4,6)]
 ####
 
@@ -32,7 +32,7 @@ terms <- terms[, c(2,3,4,6)]
 # Eliminating repeated rows in deadlines df ####
 deadlines <-  distinct(deadlines, begin_at, end_at, viewable_at, location_restriction,
                        term_id, student_id, course_id, title, .keep_all = TRUE)
-deadlines <- deadlines[, c(2, 3, 4, 5, 6, 7, 8, 9)] # Eliminating id number because it's useless
+deadlines <- deadlines[, c(2, 3, 4, 5, 6, 7, 8, 9)] # Eliminating id number 
 ####
 
 
@@ -141,8 +141,4 @@ spring2018 <- purp_vis[purp_vis$date_checkin >= "2018/01/16" & purp_vis$date_che
 summ1_2018 <- purp_vis[purp_vis$date_checkin >= "2018/05/21" & purp_vis$date_checkin <= "2018/06/30", ]
 summ2_2018 <- purp_vis[purp_vis$date_checkin >= "2018/07/02" & purp_vis$date_checkin <= "2018/08/11", ]
 fall2018 <- purp_vis[purp_vis$date_checkin >= "2018/08/20" & purp_vis$date_checkin <= "2018/12/13", ]
-
-
-
-
 
